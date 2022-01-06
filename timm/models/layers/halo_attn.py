@@ -44,7 +44,7 @@ def rel_logits_1d(q, rel_k, permute_mask: List[int]):
 
     x = (q @ rel_k.transpose(-1, -2))
 
-    if win_size == 1:
+    if rel_size == 1:
         out = x.reshape([-1, H, 1, W, win_size])
     elif W == 1:
         out = x[:, :, :, -win_size:].reshape([-1, H, 1, W, win_size])
